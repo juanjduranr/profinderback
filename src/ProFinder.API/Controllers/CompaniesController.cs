@@ -26,5 +26,18 @@ namespace ProFinder.API.Controllers
                 return StatusCode(500);
             }            
         }
+
+        [HttpGet("{id}")]
+        public IActionResult Get(int id)
+        {
+            try
+            {
+                return Ok(_repository.GetById(id));
+            }
+            catch (Exception)
+            {
+                return StatusCode(500);
+            }
+        }
     }
 }

@@ -40,6 +40,7 @@ namespace ProFinder.API
 
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<ICompanyRepository, CompanyRepository>();
+            services.AddScoped<ICompanyTypeRepository, CompanyTypeRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
