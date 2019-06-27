@@ -40,6 +40,7 @@ namespace ProFinder.API
 
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<ICompanyRepository, CompanyRepository>();
+            services.AddScoped<IReviewRepository, ReviewRepository>();
             services.AddScoped<ICompanyTypeRepository, CompanyTypeRepository>();
         }
 
