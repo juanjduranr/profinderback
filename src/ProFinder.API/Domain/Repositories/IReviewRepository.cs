@@ -11,5 +11,6 @@ namespace ProFinder.API.Domain.Repositories
         IEnumerable<Review> GetAll();
         IEnumerable<Review> GetAllByCompany(int companyId);
         Review GetById(int id);
+        Review GetByCompanyById(int reviewId, int companyId);
     }
 }

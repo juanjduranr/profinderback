@@ -19,13 +19,30 @@ namespace ProFinder.API.Controllers
         {
             _reviewRepository = reviewRepository;
         }
-
+        
         public IActionResult Get(int id)
         {
             try
             {
                 var reviews = _reviewRepository.GetAllByCompany(id);
                 return Ok(reviews);
+            }
+            catch (Exception)
+            {
+                return StatusCode(500);
+            }
+        }
+
+        [Route("{reviewId:int}")]
+        public IActionResult Get(int id, int reviewId)
+        {
+            try
+            {
+                var review = _reviewRepository.GetByCompanyById(reviewId, id);
+                if (review == null)
+                    return NotFound();
+
+                return Ok(review);
             }
             catch (Exception)
             {

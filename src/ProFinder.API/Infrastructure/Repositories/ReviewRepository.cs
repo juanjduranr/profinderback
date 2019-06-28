@@ -26,10 +26,15 @@ namespace ProFinder.API.Infrastructure.Repositories
         {
             return _context.Reviews.Where(r => r.Company.Id == companyId).ToList();
         }
-
+        
         public Review GetById(int id)
         {
             return _context.Reviews.FirstOrDefault(r => r.Id == id);
+        }
+
+        public Review GetByCompanyById(int reviewId, int companyId)
+        {
+            return _context.Reviews.FirstOrDefault(r => r.Id == reviewId && r.Company.Id == companyId);
         }
     }
 }
