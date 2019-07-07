@@ -22,6 +22,7 @@ namespace ProFinder.API.Infrastructure.Repositories
         {
             return _context.Companies
                            .Include(c => c.ServiceType)
+                           .Include(c => c.Reviews)
                            .Select(c => new Company
                            {
                                Id = c.Id,
@@ -32,14 +33,18 @@ namespace ProFinder.API.Infrastructure.Repositories
                                {
                                    Id = c.ServiceType.Id,
                                    Name = c.ServiceType.Name
-                               }                               
+                               },
+                               Reviews = c.Reviews 
                            })
                            .ToList();
         }
 
         public Company GetById(int id)
         {
-            return _context.Companies.FirstOrDefault(c => c.Id == id);
+            return _context.Companies
+                           .Include(c => c.ServiceType)
+                           .Include(c => c.Reviews)
+                           .FirstOrDefault(c => c.Id == id);
         }
     }
 }
