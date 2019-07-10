@@ -7,7 +7,7 @@ namespace ProFinder.Core.Repositories
 {
     public interface ICompanyTypeRepository
     {
-        IEnumerable<ServiceType> GetAll();
-        ServiceType GetById(int id);
+        IEnumerable<CompanyType> GetAll();
+        CompanyType GetById(int id);
     }
 }

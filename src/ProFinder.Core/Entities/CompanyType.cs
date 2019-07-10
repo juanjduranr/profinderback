@@ -4,13 +4,13 @@ using System.Text;
 
 namespace ProFinder.Core.Entities
 {
-    public class ServiceType
+    public class CompanyType
     {
         public int Id { get; set; }
         public string Name { get; set; }
         public ICollection<Company> Companies { get; set; }
 
-        public ServiceType()
+        public CompanyType()
         {
             Companies = new List<Company>();
         }

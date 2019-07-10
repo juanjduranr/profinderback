@@ -9,8 +9,10 @@ namespace ProFinder.Core.Entities
         public int Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
-        public DateTime StartDate { get; set; }
-        public ServiceType ServiceType { get; set; }
+        public DateTime FoundedDate { get; set; }
+        public int NumberOfEmployees { get; set; }
+        public decimal CostPerHour { get; set; }
+        public CompanyType CompanyType { get; set; }
         public ICollection<Review> Reviews { get; set; }
 
         public Company()
