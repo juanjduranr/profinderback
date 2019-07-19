@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace ProFinder.Core.Repositories
+namespace ProFinder.Core.Interfaces.Repositories
 {
     public interface ICompanyRepository
     {
@@ -11,4 +11,3 @@ namespace ProFinder.Core.Repositories
         Company GetById(int id);
     }
 }
-
