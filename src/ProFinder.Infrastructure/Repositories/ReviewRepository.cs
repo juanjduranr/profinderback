@@ -1,31 +1,30 @@
 ﻿using ProFinder.Core.Entities;
 using ProFinder.Core.Interfaces.Repositories;
+using ProFinder.Infrastructure.Data;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Linq;
 
 namespace ProFinder.Infrastructure.Repositories
 {
     public class ReviewRepository : IReviewRepository
     {
-        public IEnumerable<Review> GetAll()
+        private readonly ProFinderContext _db;
+
+        public ReviewRepository(ProFinderContext db)
         {
-            throw new NotImplementedException();
+            _db = db;
         }
 
         public IEnumerable<Review> GetAllByCompany(int companyId)
         {
-            throw new NotImplementedException();
+            return _db.Reviews.Where(r => r.CompanyId == companyId);
         }
 
-        public Review GetByCompanyById(int reviewId, int companyId)
+        public Review GetByCompany(int reviewId, int companyId)
         {
-            throw new NotImplementedException();
-        }
-
-        public Review GetById(int id)
-        {
-            throw new NotImplementedException();
+            return _db.Reviews.FirstOrDefault(r => r.Id == reviewId && r.CompanyId == companyId);
         }
     }
 }

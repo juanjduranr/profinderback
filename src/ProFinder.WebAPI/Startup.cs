@@ -34,6 +34,8 @@ namespace ProFinder.WebAPI
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
             services.AddScoped<ICompanyRepository, CompanyRepository>();
+            services.AddScoped<ICompanyTypeRepository, CompanyTypeRepository>();
+            services.AddScoped<IReviewRepository, ReviewRepository>();            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

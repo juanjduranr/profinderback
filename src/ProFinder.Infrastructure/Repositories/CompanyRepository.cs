@@ -1,9 +1,8 @@
-﻿using ProFinder.Core.Entities;
+﻿using Microsoft.EntityFrameworkCore;
+using ProFinder.Core.Entities;
 using ProFinder.Core.Interfaces.Repositories;
 using ProFinder.Infrastructure.Data;
-using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Linq;
 
 namespace ProFinder.Infrastructure.Repositories
@@ -19,12 +18,16 @@ namespace ProFinder.Infrastructure.Repositories
 
         public IEnumerable<Company> GetAll()
         {
-            return _db.Companies.ToList();
+            return _db.Companies.Include(c => c.Reviews).ThenInclude(r => r.Customer)
+                                .Include(c => c.CompanyType)
+                                .ToList();
         }
 
         public Company GetById(int id)
         {
-            throw new NotImplementedException();
+            return _db.Companies.Include(c => c.Reviews).ThenInclude(r => r.Customer)
+                                .Include(c => c.CompanyType)
+                                .FirstOrDefault(c => c.Id == id);
         }
     }
 }

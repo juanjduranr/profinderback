@@ -12,10 +12,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="DTO\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\ProFinder.Core\ProFinder.Core.csproj" />
     <ProjectReference Include="..\ProFinder.Infrastructure\ProFinder.Infrastructure.csproj" />
   </ItemGroup>
