@@ -26,6 +26,7 @@ namespace ProFinder.WebAPI.Mappers
             toValue.NumberOfEmployees = fromValue.NumberOfEmployees;
             toValue.CompanyTypeId = fromValue.CompanyType.Id;
             toValue.CompanyTypeName = fromValue.CompanyType.Name;
+            toValue.TotalReviews = fromValue.Reviews.Count();
             toValue.Rating = fromValue.Reviews.WeightedAverage();    
             if (includeReviews)
                 toValue.Reviews = fromValue.Reviews.Select(r => new ReviewDto

@@ -17,6 +17,7 @@ namespace ProFinder.WebAPI.DTO
         public double Rating { get; set; }
         public int CompanyTypeId { get; set; }
         public string CompanyTypeName { get; set; }
+        public int TotalReviews { get; set; }
         public List<ReviewDto> Reviews { get; set; }
 
         public CompanyDto()
