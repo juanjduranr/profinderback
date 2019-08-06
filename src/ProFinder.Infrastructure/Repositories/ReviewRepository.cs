@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Linq;
+using Microsoft.EntityFrameworkCore;
 
 namespace ProFinder.Infrastructure.Repositories
 {
@@ -19,7 +20,7 @@ namespace ProFinder.Infrastructure.Repositories
 
         public IEnumerable<Review> GetAllByCompany(int companyId)
         {
-            return _db.Reviews.Where(r => r.CompanyId == companyId);
+            return _db.Reviews.Where(r => r.CompanyId == companyId).Include(r => r.Customer);
         }
 
         public Review GetByCompany(int reviewId, int companyId)

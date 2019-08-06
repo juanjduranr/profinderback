@@ -15,9 +15,9 @@ namespace ProFinder.Infrastructure.Data
             IConfigurationRoot configuration = new ConfigurationBuilder()
                                                     .SetBasePath(Directory.GetCurrentDirectory())
                                                     .AddJsonFile(@Directory.GetCurrentDirectory() +
-                                                    "/../ProFinder.API/appsettings.Development.json").Build();
+                                                    "/../ProFinder.WebAPI/appsettings.Development.json").Build();
             var builder = new DbContextOptionsBuilder<ProFinderContext>();
-            var connectionString = configuration.GetConnectionString("DafaultTwo");
+            var connectionString = configuration.GetConnectionString("DefaultConnection");
             builder.UseSqlServer(connectionString);
             return new ProFinderContext(builder.Options);
         }

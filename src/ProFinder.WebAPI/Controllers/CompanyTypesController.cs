@@ -24,8 +24,8 @@ namespace ProFinder.WebAPI.Controllers
         {
             try
             {
-                var companies = _companyTypeRepository.GetAll();
-                return Ok(companies);
+                var companyTypes = _companyTypeRepository.GetAll();
+                return Ok(companyTypes);
             }
             catch (Exception)
             {

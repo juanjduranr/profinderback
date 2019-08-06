@@ -28,7 +28,7 @@ namespace ProFinder.WebAPI.Controllers
                 CompanyToDtoMapper.Map(companies, dtos, includeReviews);
                 return Ok(dtos);
             }
-            catch (Exception)
+            catch (Exception e)
             {
                 return StatusCode(500);
             }

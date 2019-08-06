@@ -6,8 +6,7 @@ namespace ProFinder.Core.Entities
 {
     public class Review
     {
-        public int Id { get; set; }
-        public string Title { get; set; }
+        public int Id { get; set; }        
         public string Comment { get; set; }
         public int Rating { get; set; }        
         public DateTime Date { get; set; }

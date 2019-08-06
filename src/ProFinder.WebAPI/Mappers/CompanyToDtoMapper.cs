@@ -24,19 +24,20 @@ namespace ProFinder.WebAPI.Mappers
             toValue.FoundedDate = fromValue.FoundedDate;
             toValue.CostPerHour = fromValue.CostPerHour;
             toValue.NumberOfEmployees = fromValue.NumberOfEmployees;
+            toValue.BusinessDays = fromValue.BusinessDays;
+            toValue.BusinessHours = fromValue.BusinessHours;
             toValue.CompanyTypeId = fromValue.CompanyType.Id;
             toValue.CompanyTypeName = fromValue.CompanyType.Name;
             toValue.TotalReviews = fromValue.Reviews.Count();
-            toValue.Rating = fromValue.Reviews.WeightedAverage();    
+            toValue.Rating = fromValue.Reviews.WeightedAverage();            
             if (includeReviews)
                 toValue.Reviews = fromValue.Reviews.Select(r => new ReviewDto
                 {
-                    Id = r.Id,
-                    Title = r.Title,
+                    Id = r.Id,                    
                     Comment = r.Comment,
                     Date = r.Date,
                     Rating = r.Rating,
-                    CustomerName = $"{r.Customer.FirstName} {r.Customer.LastName}"
+                    CustomerName = $"{r.Customer.FirstName} {r.Customer.LastName.First()}."
                 }).ToList();            
         }
 

@@ -5,6 +5,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using ProFinder.Core.Interfaces.Repositories;
+using ProFinder.WebAPI.DTO;
+using ProFinder.WebAPI.Mappers;
 
 namespace ProFinder.WebAPI.Controllers
 {
@@ -24,8 +26,10 @@ namespace ProFinder.WebAPI.Controllers
         {
             try
             {
-                var companies = _reviewRepository.GetAllByCompany(companyId);
-                return Ok(companies);
+                var reviews = _reviewRepository.GetAllByCompany(companyId);                                
+                var dtos = new List<ReviewDto>();
+                ReviewToDtoMapper.Map(reviews, dtos);
+                return Ok(dtos);
             }
             catch (Exception)
             {
@@ -38,8 +42,8 @@ namespace ProFinder.WebAPI.Controllers
         {
             try
             {
-                var companies = _reviewRepository.GetByCompany(reviewId, companyId);
-                return Ok(companies);
+                var review = _reviewRepository.GetByCompany(reviewId, companyId);
+                return Ok(review);
             }
             catch (Exception)
             {

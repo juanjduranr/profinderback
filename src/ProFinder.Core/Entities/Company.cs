@@ -12,6 +12,9 @@ namespace ProFinder.Core.Entities
         public DateTime FoundedDate { get; set; }
         public int NumberOfEmployees { get; set; }
         public decimal CostPerHour { get; set; }
+        public string BusinessDays { get; set; }
+        public string BusinessHours { get; set; }
+        public int CompanyTypeId { get; set; }
         public CompanyType CompanyType { get; set; }
         public ICollection<Review> Reviews { get; set; }
 

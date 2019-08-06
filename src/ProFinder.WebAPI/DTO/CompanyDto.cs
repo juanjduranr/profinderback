@@ -13,6 +13,8 @@ namespace ProFinder.WebAPI.DTO
         public string Description { get; set; }
         public DateTime FoundedDate { get; set; }
         public int NumberOfEmployees { get; set; }
+        public string BusinessDays { get; set; }
+        public string BusinessHours { get; set; }
         public decimal CostPerHour { get; set; }
         public double Rating { get; set; }
         public int CompanyTypeId { get; set; }
