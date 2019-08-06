@@ -17,6 +17,16 @@ namespace ProFinder.Infrastructure.Repositories
             _db = db;
         }
 
+        public void Add(CompanyType companyType)
+        {
+            _db.CompanyTypes.Add(companyType);
+        }
+
+        public void Delete(CompanyType companyType)
+        {
+            _db.CompanyTypes.Remove(companyType);
+        }
+
         public IEnumerable<CompanyType> GetAll()
         {
             return _db.CompanyTypes.ToList();
@@ -25,6 +35,11 @@ namespace ProFinder.Infrastructure.Repositories
         public CompanyType GetById(int id)
         {
             return _db.CompanyTypes.FirstOrDefault(c => c.Id == id);
+        }
+
+        public void Update(CompanyType companyType)
+        {
+            _db.CompanyTypes.Update(companyType);
         }
     }
 }

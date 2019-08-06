@@ -29,16 +29,11 @@ namespace ProFinder.WebAPI.Mappers
             toValue.CompanyTypeId = fromValue.CompanyType.Id;
             toValue.CompanyTypeName = fromValue.CompanyType.Name;
             toValue.TotalReviews = fromValue.Reviews.Count();
-            toValue.Rating = fromValue.Reviews.WeightedAverage();            
+            toValue.Rating = fromValue.Reviews.WeightedAverage();
             if (includeReviews)
-                toValue.Reviews = fromValue.Reviews.Select(r => new ReviewDto
-                {
-                    Id = r.Id,                    
-                    Comment = r.Comment,
-                    Date = r.Date,
-                    Rating = r.Rating,
-                    CustomerName = $"{r.Customer.FirstName} {r.Customer.LastName.First()}."
-                }).ToList();            
+            {
+                ReviewToDtoMapper.Map(fromValue.Reviews, toValue.Reviews);
+            }
         }
 
         public static void Map(IEnumerable<Company> fromValues, IList<CompanyDto> toValues, bool includeReviews = false)

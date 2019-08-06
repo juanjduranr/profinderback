@@ -16,6 +16,16 @@ namespace ProFinder.Infrastructure.Repositories
             _db = db;
         }
 
+        public void Add(Company company)
+        {
+            _db.Companies.Add(company);
+        }
+
+        public void Delete(Company company)
+        {
+            _db.Companies.Remove(company);
+        }
+
         public IEnumerable<Company> GetAll()
         {
             return _db.Companies.Include(c => c.Reviews).ThenInclude(r => r.Customer)
@@ -28,6 +38,11 @@ namespace ProFinder.Infrastructure.Repositories
             return _db.Companies.Include(c => c.Reviews).ThenInclude(r => r.Customer)
                                 .Include(c => c.CompanyType)
                                 .FirstOrDefault(c => c.Id == id);
+        }
+
+        public void Update(Company company)
+        {
+            _db.Companies.Update(company);
         }
     }
 }

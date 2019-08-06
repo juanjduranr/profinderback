@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using ProFinder.Core.Interfaces.Repositories;
 using ProFinder.WebAPI.DTO;
 using ProFinder.WebAPI.Mappers;
+using System;
+using System.Collections.Generic;
 
 namespace ProFinder.WebAPI.Controllers
 {
@@ -33,6 +30,7 @@ namespace ProFinder.WebAPI.Controllers
             }
             catch (Exception)
             {
+                //Log Exception
                 return StatusCode(500);
             }
         }
@@ -43,10 +41,13 @@ namespace ProFinder.WebAPI.Controllers
             try
             {
                 var review = _reviewRepository.GetByCompany(reviewId, companyId);
-                return Ok(review);
+                var dto = new ReviewDto();
+                ReviewToDtoMapper.Map(review, dto);
+                return Ok(dto);
             }
             catch (Exception)
             {
+                //Log exception
                 return StatusCode(500);
             }
         }

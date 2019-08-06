@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using ProFinder.Core.Interfaces.Repositories;
+using System;
 
 namespace ProFinder.WebAPI.Controllers
 {
@@ -29,6 +25,7 @@ namespace ProFinder.WebAPI.Controllers
             }
             catch (Exception)
             {
+                //Log Exception
                 return StatusCode(500);
             }
         }

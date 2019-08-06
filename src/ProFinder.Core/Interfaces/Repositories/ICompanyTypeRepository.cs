@@ -9,5 +9,8 @@ namespace ProFinder.Core.Interfaces.Repositories
     {
         IEnumerable<CompanyType> GetAll();
         CompanyType GetById(int id);
+        void Add(CompanyType companyType);
+        void Update(CompanyType companyType);
+        void Delete(CompanyType companyType);
     }
 }

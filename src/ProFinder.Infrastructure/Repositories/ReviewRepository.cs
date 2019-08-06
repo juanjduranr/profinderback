@@ -18,14 +18,30 @@ namespace ProFinder.Infrastructure.Repositories
             _db = db;
         }
 
+        public void Add(Review review)
+        {
+            _db.Reviews.Add(review);
+        }
+
+        public void Delete(Review review)
+        {
+            _db.Reviews.Remove(review);
+        }
+
         public IEnumerable<Review> GetAllByCompany(int companyId)
         {
-            return _db.Reviews.Where(r => r.CompanyId == companyId).Include(r => r.Customer);
+            return _db.Reviews.Where(r => r.CompanyId == companyId)
+                              .Include(r => r.Customer);
         }
 
         public Review GetByCompany(int reviewId, int companyId)
         {
             return _db.Reviews.FirstOrDefault(r => r.Id == reviewId && r.CompanyId == companyId);
+        }
+
+        public void Update(Review review)
+        {
+            _db.Reviews.Update(review);
         }
     }
 }
