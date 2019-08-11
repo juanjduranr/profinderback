@@ -43,7 +43,7 @@ namespace ProFinder.Infrastructure.Services
                 return new Token(tokenResponse.Error, tokenResponse.ErrorDescription);
             }
 
-            return new Token(tokenResponse.AccessToken, tokenResponse.ExpiresIn);
+            return new Token(tokenResponse.AccessToken, tokenResponse.ExpiresIn, tokenResponse.RefreshToken);
         }
     }
 }

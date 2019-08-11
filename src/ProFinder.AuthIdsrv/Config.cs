@@ -1,6 +1,7 @@
 ﻿// Copyright (c) Brock Allen & Dominick Baier. All rights reserved.
 // Licensed under the Apache License, Version 2.0. See LICENSE in the project root for license information.
 
+using IdentityServer4;
 using IdentityServer4.Models;
 using IdentityServer4.Test;
 using System.Collections.Generic;
@@ -33,11 +34,12 @@ namespace ProFinder.AuthIdsrv
                 {
                     ClientId = "profinder_react_client",
                     AllowedGrantTypes = GrantTypes.ResourceOwnerPassword,
+                    AllowOfflineAccess = true,
                     ClientSecrets =
                     {
                         new Secret("Ub9efngDat_Evrzn6DM8D_Qm7uNJmsPT".Sha256())
                     },
-                    AllowedScopes = { "profinder" }
+                    AllowedScopes = { "profinder", IdentityServerConstants.StandardScopes.OfflineAccess }
                 }
             };
         }

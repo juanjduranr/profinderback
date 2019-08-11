@@ -8,6 +8,7 @@ namespace ProFinder.Core.Entities
     {
         public string AccessToken { get; set; }
         public int ExpiresIn { get; set; }
+        public string RefreshToken { get; set; }
         public string Error { get; set; }
         public string ErrorDescription { get; set; }
         public bool IsError { get; }
@@ -23,10 +24,12 @@ namespace ProFinder.Core.Entities
         }
 
         public Token(string accessToken,
-                     int expiresIn)
+                     int expiresIn,
+                     string refreshToken)
         {
             AccessToken = accessToken;
             ExpiresIn = expiresIn;
+            RefreshToken = refreshToken;
             Error = string.Empty;
             ErrorDescription = string.Empty;
             IsError = false;
