@@ -65,7 +65,7 @@ namespace ProFinder.AuthIdsrv
                 new TestUser
                 {
                     SubjectId = "1",
-                    Username = "user01",
+                    Username = "user",
                     Password = "password",
                     Claims = new []
                     {
