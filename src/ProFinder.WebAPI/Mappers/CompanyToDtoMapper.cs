@@ -13,10 +13,10 @@ namespace ProFinder.WebAPI.Mappers
         public static void Map(Company fromValue, CompanyDto toValue, bool includeReviews = false)
         {
             if (fromValue == null)
-                throw new ArgumentException("fromValue", "Argument cannot be null");
+                throw new ArgumentException("Argument cannot be null", "fromValue");
 
             if (toValue == null)
-                throw new ArgumentException("toValue", "Argument cannot be null");
+                throw new ArgumentException("Argument cannot be null", "toValue");
 
             toValue.Id = fromValue.Id;
             toValue.Description = fromValue.Description;
@@ -39,7 +39,7 @@ namespace ProFinder.WebAPI.Mappers
         public static void Map(IEnumerable<Company> fromValues, IList<CompanyDto> toValues, bool includeReviews = false)
         {
             if (fromValues == null)
-                throw new ArgumentNullException("fromValues", "fromValues is null.");
+                throw new ArgumentNullException("fromValues is null.", "fromValues");
 
             CompanyDto toValue;
 

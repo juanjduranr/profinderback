@@ -11,7 +11,7 @@ namespace ProFinder.WebAPI.Controllers
     [ApiController]
     public class CompaniesController : ControllerBase
     {
-        private readonly ICompanyRepository _companyRepository;        
+        private readonly ICompanyRepository _companyRepository;
 
         public CompaniesController(ICompanyRepository companyRepository)
         {
@@ -31,7 +31,7 @@ namespace ProFinder.WebAPI.Controllers
             catch (Exception e)
             {
                 //Log Exception
-                return StatusCode(500);
+                return StatusCode(500, e);
             }
         }
 
@@ -48,10 +48,10 @@ namespace ProFinder.WebAPI.Controllers
                 CompanyToDtoMapper.Map(company, dto, includeReviews);
                 return Ok(dto);
             }
-            catch (Exception)
+            catch (Exception e)
             {
                 //Log Exception
-                return StatusCode(500);
+                return StatusCode(500, e);
             }
         }
     }

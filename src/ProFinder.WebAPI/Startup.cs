@@ -5,8 +5,10 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using ProFinder.Core.Interfaces.Repositories;
+using ProFinder.Core.Interfaces.Services;
 using ProFinder.Infrastructure.Data;
 using ProFinder.Infrastructure.Repositories;
+using ProFinder.Infrastructure.Services;
 
 namespace ProFinder.WebAPI
 {
@@ -29,7 +31,8 @@ namespace ProFinder.WebAPI
 
             services.AddScoped<ICompanyRepository, CompanyRepository>();
             services.AddScoped<ICompanyTypeRepository, CompanyTypeRepository>();
-            services.AddScoped<IReviewRepository, ReviewRepository>();            
+            services.AddScoped<IReviewRepository, ReviewRepository>();
+            services.AddScoped<IAuthService, AuthService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
