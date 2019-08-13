@@ -14,6 +14,7 @@ namespace ProFinder.Core.Entities
         public decimal CostPerHour { get; set; }
         public string BusinessDays { get; set; }
         public string BusinessHours { get; set; }
+        public string ImageUrl { get; set; }
         public int CompanyTypeId { get; set; }
         public CompanyType CompanyType { get; set; }
         public ICollection<Review> Reviews { get; set; }

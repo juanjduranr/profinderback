@@ -26,6 +26,7 @@ namespace ProFinder.WebAPI.Mappers
             toValue.NumberOfEmployees = fromValue.NumberOfEmployees;
             toValue.BusinessDays = fromValue.BusinessDays;
             toValue.BusinessHours = fromValue.BusinessHours;
+            toValue.ImageUrl = fromValue.ImageUrl;
             toValue.CompanyTypeId = fromValue.CompanyType.Id;
             toValue.CompanyTypeName = fromValue.CompanyType.Name;
             toValue.TotalReviews = fromValue.Reviews.Count();

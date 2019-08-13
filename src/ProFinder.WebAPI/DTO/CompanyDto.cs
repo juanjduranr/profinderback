@@ -14,6 +14,7 @@ namespace ProFinder.WebAPI.DTO
         public string BusinessHours { get; set; }
         public decimal CostPerHour { get; set; }
         public double Rating { get; set; }
+        public string ImageUrl { get; set; }
         public int CompanyTypeId { get; set; }
         public string CompanyTypeName { get; set; }
         public int TotalReviews { get; set; }

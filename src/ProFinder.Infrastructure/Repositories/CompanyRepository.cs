@@ -30,6 +30,7 @@ namespace ProFinder.Infrastructure.Repositories
         {
             return _db.Companies.Include(c => c.Reviews).ThenInclude(r => r.Customer)
                                 .Include(c => c.CompanyType)
+                                .OrderBy(c => c.Name)
                                 .ToList();
         }
 

@@ -4,7 +4,8 @@ using System.Text;
 
 namespace ProFinder.Core.Interfaces
 {
-    interface IUnitOfWork
+    public interface IUnitOfWork
     {
+        int Save();
     }
 }
