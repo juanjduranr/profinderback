@@ -28,6 +28,12 @@ namespace ProFinder.Infrastructure.Repositories
             _db.Reviews.Remove(review);
         }
 
+        public Review Get(int id)
+        {
+            return _db.Reviews.Include(r => r.Customer)
+                              .FirstOrDefault(r => r.Id == id);
+        }
+
         public IEnumerable<Review> GetAllByCompany(int companyId)
         {
             return _db.Reviews.Where(r => r.CompanyId == companyId)

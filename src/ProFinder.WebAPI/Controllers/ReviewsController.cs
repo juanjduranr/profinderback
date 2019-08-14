@@ -1,24 +1,30 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using ProFinder.Core.Interfaces;
 using ProFinder.Core.Interfaces.Repositories;
 using ProFinder.WebAPI.DTO;
+using ProFinder.WebAPI.Extensions;
 using ProFinder.WebAPI.Mappers;
 using System;
 using System.Collections.Generic;
 
 namespace ProFinder.WebAPI.Controllers
-{
-    [Route("api/companies/{companyId}/reviews")]
+{    
     [ApiController]
     public class ReviewsController : ControllerBase
     {
         private readonly IReviewRepository _reviewRepository;
+        private readonly IUnitOfWork _unitOfWork;
 
-        public ReviewsController(IReviewRepository reviewRepository)
+        public ReviewsController(IReviewRepository reviewRepository,
+                                 IUnitOfWork unitOfWork)
         {
             _reviewRepository = reviewRepository;
+            _unitOfWork = unitOfWork;
         }
 
         [HttpGet]
+        [Route("api/companies/{companyId}/reviews")]
         public IActionResult Get(int companyId)
         {
             try
@@ -34,8 +40,8 @@ namespace ProFinder.WebAPI.Controllers
                 return StatusCode(500);
             }
         }
-
-        [Route("{reviewId:int}")]
+                
+        [Route("api/companies/{companyId}/reviews/{reviewId:int}")]
         public IActionResult Get(int companyId, int reviewId)
         {
             try
@@ -49,6 +55,56 @@ namespace ProFinder.WebAPI.Controllers
             {
                 //Log exception
                 return StatusCode(500);
+            }
+        }
+
+        [Route("api/reviews")]
+        public IActionResult Post(AddReviewDto dto)
+        {
+            try
+            {
+                var model = new Core.Entities.Review()
+                {
+                    Rating = dto.Rating,
+                    Comment = dto.Comment,
+                    CompanyId = dto.CompanyId,
+                    CustomerId = dto.CustomerId,
+                    Date = DateTime.Now
+                };
+                _reviewRepository.Add(model);
+                _unitOfWork.Save();
+                return Created("", dto);
+            }
+            catch (Exception)
+            {
+                //Log exception
+                return StatusCode(500);
+            }
+        }
+
+        [Route("api/reviews/{id}")]
+        [HttpDelete]
+        [Authorize]
+        public IActionResult Delete(int id)
+        {
+            try
+            {
+                var review = _reviewRepository.Get(id);
+                if (review == null)
+                    return BadRequest();
+
+                var userExternalId = User.GetExternalId();
+                if (userExternalId != review.Customer.ExternalId)
+                    return Forbid();
+
+                _reviewRepository.Delete(review);
+                _unitOfWork.Save();
+                return NoContent();
+            }
+            catch (Exception e)
+            {
+                //Log exception
+                return StatusCode(500, e);
             }
         }
     }

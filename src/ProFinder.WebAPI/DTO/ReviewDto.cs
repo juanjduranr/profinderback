@@ -11,6 +11,8 @@ namespace ProFinder.WebAPI.DTO
         public string Comment { get; set; }
         public int Rating { get; set; }
         public DateTime Date { get; set; }        
-        public string CustomerName { get; set; }                
+        public string CustomerName { get; set; }
+        public int CustomerId { get; set; }        
+        public int CompanyId { get; set; }
     }
 }

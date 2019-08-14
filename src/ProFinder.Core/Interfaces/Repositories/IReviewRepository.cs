@@ -9,6 +9,7 @@ namespace ProFinder.Core.Interfaces.Repositories
     {        
         IEnumerable<Review> GetAllByCompany(int companyId);        
         Review GetByCompany(int reviewId, int companyId);
+        Review Get(int id);
         void Add(Review review);
         void Update(Review review);
         void Delete(Review review);

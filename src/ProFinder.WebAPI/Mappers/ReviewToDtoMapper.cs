@@ -21,7 +21,9 @@ namespace ProFinder.WebAPI.Mappers
             toValue.Comment = fromValue.Comment;
             toValue.CustomerName = $"{fromValue.Customer.FirstName} {fromValue.Customer.LastName.First()}.";
             toValue.Date = fromValue.Date;
-            toValue.Rating = fromValue.Rating;                     
+            toValue.Rating = fromValue.Rating;
+            toValue.CustomerId = fromValue.Customer.Id;
+            toValue.CompanyId = fromValue.CompanyId;
         }
 
         public static void Map(IEnumerable<Review> fromValues, IList<ReviewDto> toValues)
