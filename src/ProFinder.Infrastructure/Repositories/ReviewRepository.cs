@@ -42,7 +42,8 @@ namespace ProFinder.Infrastructure.Repositories
 
         public Review GetByCompany(int reviewId, int companyId)
         {
-            return _db.Reviews.FirstOrDefault(r => r.Id == reviewId && r.CompanyId == companyId);
+            return _db.Reviews.Include(r => r.Customer)
+                              .FirstOrDefault(r => r.Id == reviewId && r.CompanyId == companyId);
         }
 
         public void Update(Review review)

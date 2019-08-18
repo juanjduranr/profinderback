@@ -11,6 +11,7 @@ using System.Collections.Generic;
 namespace ProFinder.WebAPI.Controllers
 {    
     [ApiController]
+    [Route("api/companies/{companyId}/reviews")]
     public class ReviewsController : ControllerBase
     {
         private readonly IReviewRepository _reviewRepository;
@@ -27,7 +28,6 @@ namespace ProFinder.WebAPI.Controllers
         }
 
         [HttpGet]
-        [Route("api/companies/{companyId}/reviews")]
         public IActionResult Get(int companyId)
         {
             try
@@ -44,7 +44,7 @@ namespace ProFinder.WebAPI.Controllers
             }
         }
                 
-        [Route("api/companies/{companyId}/reviews/{reviewId:int}")]
+        [Route("{reviewId:int}")]
         public IActionResult Get(int companyId, int reviewId)
         {
             try
@@ -54,7 +54,7 @@ namespace ProFinder.WebAPI.Controllers
                 ReviewToDtoMapper.Map(review, dto);
                 return Ok(dto);
             }
-            catch (Exception)
+            catch (Exception e)
             {
                 //Log exception
                 return StatusCode(500);
@@ -62,8 +62,8 @@ namespace ProFinder.WebAPI.Controllers
         }
 
         [Authorize]
-        [Route("api/reviews")]
-        public IActionResult Post(ReviewDto dto)
+        [HttpPost]
+        public IActionResult Post(int companyId, [FromBody]ReviewDto dto)
         {
             try
             {
@@ -81,7 +81,7 @@ namespace ProFinder.WebAPI.Controllers
                 _reviewRepository.Add(model);
                 _unitOfWork.Save();
                 dto.Id = model.Id;
-                return Created("", dto);
+                return Created($"api/companies/{companyId}/reviews/{model.Id}", dto);
             }
             catch (Exception)
             {
@@ -92,12 +92,12 @@ namespace ProFinder.WebAPI.Controllers
 
         [Authorize]
         [HttpDelete]
-        [Route("api/reviews/{id}")]
-        public IActionResult Delete(int id)
+        [Route("{reviewId:int}")]
+        public IActionResult Delete(int companyId, int reviewId)
         {
             try
             {
-                var review = _reviewRepository.Get(id);
+                var review = _reviewRepository.Get(reviewId);
                 if (review == null)
                     return BadRequest();
 
