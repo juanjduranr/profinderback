@@ -14,12 +14,15 @@ namespace ProFinder.WebAPI.Controllers
     public class ReviewsController : ControllerBase
     {
         private readonly IReviewRepository _reviewRepository;
+        private readonly ICustomerRepository _customerRepository;
         private readonly IUnitOfWork _unitOfWork;
 
         public ReviewsController(IReviewRepository reviewRepository,
+                                 ICustomerRepository customerRepository,
                                  IUnitOfWork unitOfWork)
         {
             _reviewRepository = reviewRepository;
+            _customerRepository = customerRepository;
             _unitOfWork = unitOfWork;
         }
 
@@ -58,21 +61,26 @@ namespace ProFinder.WebAPI.Controllers
             }
         }
 
+        [Authorize]
         [Route("api/reviews")]
-        public IActionResult Post(AddReviewDto dto)
+        public IActionResult Post(ReviewDto dto)
         {
             try
             {
-                var model = new Core.Entities.Review()
-                {
-                    Rating = dto.Rating,
-                    Comment = dto.Comment,
-                    CompanyId = dto.CompanyId,
-                    CustomerId = dto.CustomerId,
-                    Date = DateTime.Now
-                };
+                var customerExtarnalId = User.GetExternalId();
+                if (customerExtarnalId != dto.CustomerId)
+                    return Forbid();
+
+                var customer = _customerRepository.GetByExternalId(customerExtarnalId);
+                if (customer == null)
+                    return Forbid();
+                
+                dto.Date = DateTime.Now;
+                var model = new Core.Entities.Review();
+                DtoToReviewMapper.Map(dto, model);
                 _reviewRepository.Add(model);
                 _unitOfWork.Save();
+                dto.Id = model.Id;
                 return Created("", dto);
             }
             catch (Exception)
@@ -82,9 +90,9 @@ namespace ProFinder.WebAPI.Controllers
             }
         }
 
-        [Route("api/reviews/{id}")]
-        [HttpDelete]
         [Authorize]
+        [HttpDelete]
+        [Route("api/reviews/{id}")]
         public IActionResult Delete(int id)
         {
             try
@@ -93,8 +101,12 @@ namespace ProFinder.WebAPI.Controllers
                 if (review == null)
                     return BadRequest();
 
-                var userExternalId = User.GetExternalId();
-                if (userExternalId != review.Customer.ExternalId)
+                var customerExtarnalId = User.GetExternalId();
+                var customer = _customerRepository.GetByExternalId(customerExtarnalId);
+                if (customer == null)
+                    return Forbid();
+
+                if (customerExtarnalId != review.Customer.ExternalId)
                     return Forbid();
 
                 _reviewRepository.Delete(review);

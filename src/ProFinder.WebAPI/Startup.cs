@@ -37,8 +37,7 @@ namespace ProFinder.WebAPI
                     {
                         options.Authority = Configuration["idsrvConfig:url"];
                         options.RequireHttpsMetadata = false;
-
-                        options.Audience = "profinder";
+                        options.Audience = Configuration["idsrvConfig:audience"];
                     });
 
             services.AddScoped<ICustomerRepository, CustomerRepository>();
