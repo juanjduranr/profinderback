@@ -2,6 +2,7 @@
 using ProFinder.Core.Interfaces.Repositories;
 using ProFinder.WebAPI.DTO;
 using ProFinder.WebAPI.Mappers;
+using Serilog;
 using System;
 using System.Collections.Generic;
 
@@ -28,10 +29,10 @@ namespace ProFinder.WebAPI.Controllers
                 CompanyToDtoMapper.Map(companies, dtos, includeReviews);
                 return Ok(dtos);
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                //Log Exception
-                return StatusCode(500, e);
+                Log.Error(ex, $"unhandled exception");
+                return StatusCode(500, ex);
             }
         }
 
@@ -48,10 +49,10 @@ namespace ProFinder.WebAPI.Controllers
                 CompanyToDtoMapper.Map(company, dto, includeReviews);
                 return Ok(dto);
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                //Log Exception
-                return StatusCode(500, e);
+                Log.Error(ex, $"unhandled exception");
+                return StatusCode(500, ex);
             }
         }
     }

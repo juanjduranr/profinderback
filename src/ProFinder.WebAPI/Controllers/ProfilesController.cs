@@ -1,15 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using ProFinder.Core.Interfaces;
 using ProFinder.Core.Interfaces.Repositories;
 using ProFinder.WebAPI.DTO;
 using ProFinder.WebAPI.Extensions;
 using ProFinder.WebAPI.Mappers;
+using Serilog;
+using System;
 
 namespace ProFinder.WebAPI.Controllers
 {
@@ -42,10 +39,10 @@ namespace ProFinder.WebAPI.Controllers
                 CustomerToDtoMapper.Map(customer, dto);
                 return Ok(dto);
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                //Log Exception
-                return StatusCode(500, e);
+                Log.Error(ex, $"unhandled exception");
+                return StatusCode(500, ex);
             }            
         }
 
@@ -71,10 +68,10 @@ namespace ProFinder.WebAPI.Controllers
                 _unitOfWork.Save();
                 return NoContent();
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                //Log Exception
-                return StatusCode(500, e);
+                Log.Error(ex, $"unhandled exception");
+                return StatusCode(500, ex);
             }
         }
     }

@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using ProFinder.Core.Interfaces.Repositories;
+using Serilog;
 using System;
 
 namespace ProFinder.WebAPI.Controllers
@@ -23,10 +24,10 @@ namespace ProFinder.WebAPI.Controllers
                 var companyTypes = _companyTypeRepository.GetAll();
                 return Ok(companyTypes);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                //Log Exception
-                return StatusCode(500);
+                Log.Error(ex, $"unhandled exception");
+                return StatusCode(500, ex);
             }
         }
 

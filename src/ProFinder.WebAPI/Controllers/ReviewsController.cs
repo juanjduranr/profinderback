@@ -5,6 +5,7 @@ using ProFinder.Core.Interfaces.Repositories;
 using ProFinder.WebAPI.DTO;
 using ProFinder.WebAPI.Extensions;
 using ProFinder.WebAPI.Mappers;
+using Serilog;
 using System;
 using System.Collections.Generic;
 
@@ -37,10 +38,10 @@ namespace ProFinder.WebAPI.Controllers
                 ReviewToDtoMapper.Map(reviews, dtos);
                 return Ok(dtos);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                //Log Exception
-                return StatusCode(500);
+                Log.Error(ex, $"unhandled exception");
+                return StatusCode(500, ex);
             }
         }
                 
@@ -54,10 +55,10 @@ namespace ProFinder.WebAPI.Controllers
                 ReviewToDtoMapper.Map(review, dto);
                 return Ok(dto);
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                //Log exception
-                return StatusCode(500);
+                Log.Error(ex, $"unhandled exception");
+                return StatusCode(500, ex);
             }
         }
 
@@ -83,10 +84,10 @@ namespace ProFinder.WebAPI.Controllers
                 dto.Id = model.Id;
                 return Created($"api/companies/{companyId}/reviews/{model.Id}", dto);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                //Log exception
-                return StatusCode(500);
+                Log.Error(ex, $"unhandled exception");
+                return StatusCode(500, ex);
             }
         }
 
@@ -113,10 +114,10 @@ namespace ProFinder.WebAPI.Controllers
                 _unitOfWork.Save();
                 return NoContent();
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                //Log exception
-                return StatusCode(500, e);
+                Log.Error(ex, $"unhandled exception");
+                return StatusCode(500, ex);
             }
         }
     }
