@@ -59,7 +59,7 @@ namespace ProFinder.Infrastructure.Migrations
                             CostPerHour = 80.00m,
                             Description = "Repairs, installation, maintenance, assembly and Painting",
                             FoundedDate = new DateTime(2015, 8, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ImageUrl = "http://placeimg.com/200/200/any",
+                            ImageUrl = "http://i.imgur.com/A0dRRH7.jpg",
                             Name = "Fix it",
                             NumberOfEmployees = 10
                         },
@@ -72,8 +72,8 @@ namespace ProFinder.Infrastructure.Migrations
                             CostPerHour = 110.00m,
                             Description = "General construction services and repairs, design and maintenance",
                             FoundedDate = new DateTime(1990, 6, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ImageUrl = "http://placeimg.com/200/200/any",
-                            Name = "Handyman services",
+                            ImageUrl = "http://i.imgur.com/qKRk812.jpg",
+                            Name = "Best repair",
                             NumberOfEmployees = 50
                         },
                         new
@@ -85,7 +85,7 @@ namespace ProFinder.Infrastructure.Migrations
                             CostPerHour = 55.00m,
                             Description = "Well prepared staff of handyman and the right resources to do a great work",
                             FoundedDate = new DateTime(2012, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ImageUrl = "http://placeimg.com/200/200/any",
+                            ImageUrl = "http://i.imgur.com/3LewfuQ.jpg",
                             Name = "Fast repair",
                             NumberOfEmployees = 8
                         },
@@ -98,7 +98,7 @@ namespace ProFinder.Infrastructure.Migrations
                             CostPerHour = 39.00m,
                             Description = "Our service is efficient, professional and low cost",
                             FoundedDate = new DateTime(2018, 3, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ImageUrl = "http://placeimg.com/200/200/any",
+                            ImageUrl = "https://i.imgur.com/DyXF5UZ.jpg",
                             Name = "Home improvement",
                             NumberOfEmployees = 5
                         },
@@ -111,8 +111,8 @@ namespace ProFinder.Infrastructure.Migrations
                             CostPerHour = 35.00m,
                             Description = "Best cleaning service in town",
                             FoundedDate = new DateTime(2005, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ImageUrl = "http://placeimg.com/200/200/any",
-                            Name = "Cleaning pros",
+                            ImageUrl = "http://i.imgur.com/8GKAgCU.jpg",
+                            Name = "Residential Cleaning",
                             NumberOfEmployees = 4
                         },
                         new
@@ -124,8 +124,8 @@ namespace ProFinder.Infrastructure.Migrations
                             CostPerHour = 25.00m,
                             Description = "Experience in Cleaning Houses, Apartments, Hotels, Offices, Whorehouse, Moving, packing and unpacking, organization Houses",
                             FoundedDate = new DateTime(2010, 7, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ImageUrl = "http://placeimg.com/200/200/any",
-                            Name = "Cleaning services",
+                            ImageUrl = "http://i.imgur.com/wgwuBID.jpg",
+                            Name = "Home cleaning",
                             NumberOfEmployees = 2
                         },
                         new
@@ -137,7 +137,7 @@ namespace ProFinder.Infrastructure.Migrations
                             CostPerHour = 70.00m,
                             Description = "We has more than a decade of experience providing high quality residential and commercial cleaning services",
                             FoundedDate = new DateTime(2007, 11, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ImageUrl = "http://placeimg.com/200/200/any",
+                            ImageUrl = "http://i.imgur.com/SlOBG3A.jpg",
                             Name = "Dedicated cleaning",
                             NumberOfEmployees = 25
                         },
@@ -150,7 +150,7 @@ namespace ProFinder.Infrastructure.Migrations
                             CostPerHour = 30.00m,
                             Description = "We take great pride in our attention to health and safety, staying up to date with regular training in the latest cleaning agents and methods",
                             FoundedDate = new DateTime(2015, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ImageUrl = "http://placeimg.com/200/200/any",
+                            ImageUrl = "http://i.imgur.com/oej3XwX.jpg",
                             Name = "Alpha cleaners",
                             NumberOfEmployees = 10
                         },
@@ -163,8 +163,8 @@ namespace ProFinder.Infrastructure.Migrations
                             CostPerHour = 60.00m,
                             Description = "If you’re in need of home cleaning, apartment cleaning, or a maid service, we’re simply your best option and most convenient home cleaning service out there",
                             FoundedDate = new DateTime(2016, 5, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ImageUrl = "http://placeimg.com/200/200/any",
-                            Name = "Clean solutions",
+                            ImageUrl = "https://i.imgur.com/QQE9mII.jpg",
+                            Name = "Z cleaning services",
                             NumberOfEmployees = 15
                         },
                         new
@@ -176,7 +176,7 @@ namespace ProFinder.Infrastructure.Migrations
                             CostPerHour = 45.00m,
                             Description = "We are fast, reliable, certified and Affordable",
                             FoundedDate = new DateTime(2015, 4, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ImageUrl = "http://placeimg.com/200/200/any",
+                            ImageUrl = "https://i.imgur.com/sltuRmG.jpg",
                             Name = "Tech experts",
                             NumberOfEmployees = 4
                         },
@@ -189,8 +189,8 @@ namespace ProFinder.Infrastructure.Migrations
                             CostPerHour = 40.00m,
                             Description = "Having problems with your PC, or any other I.T. related matter? Our technicians specialize in I.T.services",
                             FoundedDate = new DateTime(2017, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ImageUrl = "http://placeimg.com/200/200/any",
-                            Name = "IT solutions",
+                            ImageUrl = "http://i.imgur.com/r3814DQ.jpg",
+                            Name = "Computer repair",
                             NumberOfEmployees = 3
                         },
                         new
@@ -202,7 +202,7 @@ namespace ProFinder.Infrastructure.Migrations
                             CostPerHour = 40.00m,
                             Description = "We help clients with ease when they think the world is about to end since their computer is not working right",
                             FoundedDate = new DateTime(2018, 5, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ImageUrl = "http://placeimg.com/200/200/any",
+                            ImageUrl = "http://i.imgur.com/tAYRXuu.jpg",
                             Name = "Fast computer repair",
                             NumberOfEmployees = 2
                         },
@@ -215,7 +215,7 @@ namespace ProFinder.Infrastructure.Migrations
                             CostPerHour = 25.00m,
                             Description = "I’m reliable and responsible. I take care of every animal as if it were my own.",
                             FoundedDate = new DateTime(2017, 5, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ImageUrl = "http://placeimg.com/200/200/any",
+                            ImageUrl = "http://i.imgur.com/I9wegW9.jpg",
                             Name = "JD pet services",
                             NumberOfEmployees = 1
                         },
@@ -228,7 +228,7 @@ namespace ProFinder.Infrastructure.Migrations
                             CostPerHour = 35.00m,
                             Description = "Treat your dog or cat to a mobile pet grooming experience like no other.",
                             FoundedDate = new DateTime(2018, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ImageUrl = "http://placeimg.com/200/200/any",
+                            ImageUrl = "http://i.imgur.com/VmFBJ2k.jpg",
                             Name = "Pet care",
                             NumberOfEmployees = 5
                         },
@@ -241,8 +241,8 @@ namespace ProFinder.Infrastructure.Migrations
                             CostPerHour = 30.00m,
                             Description = "Professional pet sitter",
                             FoundedDate = new DateTime(2016, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ImageUrl = "http://placeimg.com/200/200/any",
-                            Name = "Pet lovers",
+                            ImageUrl = "http://i.imgur.com/WAhHW1C.jpg",
+                            Name = "Animal care",
                             NumberOfEmployees = 2
                         });
                 });
