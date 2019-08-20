@@ -62,11 +62,9 @@ namespace ProFinder.WebAPI.Controllers
                 if (customer == null)
                     return NotFound();
 
-                customer.FirstName = dto.Name;
-                customer.LastName = dto.LastName;
-                customer.Email = dto.Email;
+                DtoToCustomerMapper.Map(dto, customer);
                 _unitOfWork.Save();
-                return NoContent();
+                return Ok();
             }
             catch (Exception ex)
             {

@@ -75,6 +75,9 @@ namespace ProFinder.WebAPI.Controllers
                 var customer = _customerRepository.GetByExternalId(customerExtarnalId);
                 if (customer == null)
                     return Forbid();
+
+                if (dto.Rating < 1  || dto.Rating > 5)
+                    return BadRequest("rating cannot be less than 1 and greater than 5");
                 
                 dto.Date = DateTime.Now;
                 var model = new Core.Entities.Review();
@@ -112,7 +115,7 @@ namespace ProFinder.WebAPI.Controllers
 
                 _reviewRepository.Delete(review);
                 _unitOfWork.Save();
-                return NoContent();
+                return Ok();
             }
             catch (Exception ex)
             {

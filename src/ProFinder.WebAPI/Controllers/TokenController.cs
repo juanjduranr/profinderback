@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using ProFinder.Core.Interfaces.Services;
 using ProFinder.WebAPI.DTO;
+using ProFinder.WebAPI.Mappers;
 using Serilog;
 using System;
 using System.Threading.Tasks;
@@ -31,7 +32,9 @@ namespace ProFinder.WebAPI.Controllers
                 if (token.IsError)
                     return BadRequest("Invalid credentials");
 
-                return Ok(new TokenDto { AccessToken = token.AccessToken, ExpiresIn = token.ExpiresIn, RefreshToken = token.RefreshToken });
+                var tokenDto = new TokenDto();
+                TokenToDtoMapper.Map(token, tokenDto);
+                return Ok(tokenDto);
             }
             catch (Exception ex)
             {
