@@ -66,7 +66,7 @@ namespace ProFinder.AuthIdsrv
                     Password = "password",
                     Claims = new []
                     {
-                        new Claim("preferred_username", "Juan Duran")
+                        new Claim("preferred_username", "John Miller")
                     }
                 }
             };
