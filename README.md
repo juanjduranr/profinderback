@@ -44,6 +44,13 @@ Para poder descargar el proyecto y ejecutarlo debes seguir los siguientes pasos:
 5) Iniciar el proyecto en Visual Studio.
 
 	Al iniciar el proyecto, se crea la base de datos y se agrega la información automáticamente, este proceso utiliza por defecto SQL Server Express LocalDB en caso de que quieras utilizar SQL Server Express debes cambiar la cadena de conexión de la base de datos en el appsettings.Development.json.
+	
+6) Para verificar que el proyecto funciona correctamente puedes ir a las siguientes direcciones en el navegador:
+	-http://localhost:32867/api/companies (listado de compañías)
+	![alt text](http://i.imgur.com/EIHUFQJ.jpg)
+	
+	-http://localhost:5000/.well-known/openid-configuration (documento de descubrimiento de IDSRV)
+	![alt text](http://i.imgur.com/9io4fEm.jpg)
 
 
 ## Arquitectura
