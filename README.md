@@ -80,7 +80,7 @@ En el sistema se utilizaron los siguientes patrones de diseño:
 ## Tecnologías utilizadas
 
 - ASP.NET Core 2.2
-- ASP.NET Api Core
+- ASP.NET Core Api 
 - Serilog
 - IdentityServer 4
 
